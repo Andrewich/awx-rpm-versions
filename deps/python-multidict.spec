@@ -14,6 +14,9 @@ Source:         %{pypi_source multidict}
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 
 
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n multidict-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

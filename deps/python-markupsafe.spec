@@ -14,6 +14,9 @@ Source:         %{pypi_source MarkupSafe}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 
 
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n MarkupSafe-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

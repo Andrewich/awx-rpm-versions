@@ -14,6 +14,9 @@ Source:         %{pypi_source awscrt}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
@@ -32,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n awscrt-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

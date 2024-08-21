@@ -14,6 +14,9 @@ Source:         %{pypi_source psutil}
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 43
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 
 
@@ -34,11 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n psutil-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

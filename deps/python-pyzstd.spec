@@ -15,6 +15,9 @@ Source:         %{pypi_source pyzstd}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 64
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 
 
@@ -32,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pyzstd-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build
