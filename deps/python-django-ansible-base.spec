@@ -10,7 +10,7 @@ Summary:        Reserved package
 # https://docs.fedoraproject.org/en-US/packaging-guidelines/LicensingGuidelines/
 License:        gpl
 URL:            https://pypi.org/project/django-ansible-base/
-Source:         https://github.com/ansible/django-ansible-base/releases/download/2024.6.11/django_ansible_base-2024.7.1.tar.gz 
+Source:         https://github.com/ansible/django-ansible-base/releases/download/2024.7.1/django_ansible_base-2024.7.1.tar.gz 
 Patch:		django-ansible-base-versionfix.patch
 
 BuildArch:      noarch
