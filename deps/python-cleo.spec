@@ -15,6 +15,10 @@ Source:         %{pypi_source cleo}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry-core) >= 1.1
+BuildRequires:  (python%{python3_pkgversion}dist(crashtest) < 0.5~~ with python%{python3_pkgversion}dist(crashtest) >= 0.4.1)
+BuildRequires:  (python%{python3_pkgversion}dist(rapidfuzz) < 4~~ with python%{python3_pkgversion}dist(rapidfuzz) >= 3)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n cleo-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

@@ -15,6 +15,12 @@ Source:         %{pypi_source channels}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(django) >= 2.2
+BuildRequires:  (python%{python3_pkgversion}dist(asgiref) < 4~~ with python%{python3_pkgversion}dist(asgiref) >= 3.5)
+BuildRequires:  (python%{python3_pkgversion}dist(daphne) < 4~~ with python%{python3_pkgversion}dist(daphne) >= 3)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n channels-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

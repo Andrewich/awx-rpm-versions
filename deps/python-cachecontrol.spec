@@ -15,6 +15,11 @@ Source:         %{pypi_source cachecontrol}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(flit-core) < 4~~ with python%{python3_pkgversion}dist(flit-core) >= 3.2)
+BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2.16
+BuildRequires:  (python%{python3_pkgversion}dist(msgpack) < 2~~ with python%{python3_pkgversion}dist(msgpack) >= 0.5.2)
+BuildRequires:  python%{python3_pkgversion}dist(filelock) >= 3.8
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n cachecontrol-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x filecache
 
 
 

@@ -15,6 +15,10 @@ Source:         %{pypi_source aiosignal}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 51
+BuildRequires:  python%{python3_pkgversion}dist(wheel) >= 0.36
+BuildRequires:  python%{python3_pkgversion}dist(frozenlist) >= 1.1
 
 
 # Fill in the actual package description to submit package to Fedora

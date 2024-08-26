@@ -14,6 +14,10 @@ Source:         %{pypi_source cffi}
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 66.1
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(pycparser)
 BuildRequires:  gcc
 BuildRequires:  libffi-devel
 
@@ -31,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n cffi-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

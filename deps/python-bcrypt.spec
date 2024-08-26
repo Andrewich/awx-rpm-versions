@@ -14,6 +14,12 @@ Source:         %{pypi_source bcrypt}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 42
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-rust)
+BuildRequires:  ((python%{python3_pkgversion}dist(pytest) < 3.3 or python%{python3_pkgversion}dist(pytest) > 3.3) with python%{python3_pkgversion}dist(pytest) >= 3.2.1)
+BuildRequires:  python%{python3_pkgversion}dist(mypy)
 BuildRequires:  gcc
 BuildRequires:  rust
 BuildRequires:  cargo
@@ -36,11 +42,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n bcrypt-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x tests,typecheck
 
 
 %build

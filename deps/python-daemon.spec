@@ -15,6 +15,11 @@ Source:         %{pypi_source python-daemon}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 62.4
+BuildRequires:  python%{python3_pkgversion}dist(docutils)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(lockfile) >= 0.10
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +39,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n python-daemon-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

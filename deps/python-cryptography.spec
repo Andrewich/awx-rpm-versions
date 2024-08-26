@@ -14,6 +14,11 @@ Source:         %{pypi_source cryptography}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 61
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(cffi) >= 1.12
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-rust) >= 0.11.4
 BuildRequires:	openssl-devel
 BuildRequires:  gcc
 BuildRequires:  rust
@@ -37,11 +42,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n cryptography-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

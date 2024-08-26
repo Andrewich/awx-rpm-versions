@@ -15,6 +15,12 @@ Source:         %{pypi_source boto3}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(botocore) < 1.35~~ with python%{python3_pkgversion}dist(botocore) >= 1.34.47)
+BuildRequires:  (python%{python3_pkgversion}dist(jmespath) < 2~~ with python%{python3_pkgversion}dist(jmespath) >= 0.7.1)
+BuildRequires:  (python%{python3_pkgversion}dist(s3transfer) < 0.11~~ with python%{python3_pkgversion}dist(s3transfer) >= 0.10)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n boto3-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

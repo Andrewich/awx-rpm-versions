@@ -16,6 +16,18 @@ Patch:		django-ansible-base-versionfix.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 64
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(cryptography)
+BuildRequires:  (python%{python3_pkgversion}dist(django) < 4.3~~ with python%{python3_pkgversion}dist(django) >= 4.2.5)
+BuildRequires:  python%{python3_pkgversion}dist(djangorestframework)
+BuildRequires:  python%{python3_pkgversion}dist(django-crum)
+BuildRequires:  python%{python3_pkgversion}dist(django-split-settings)
+BuildRequires:  python%{python3_pkgversion}dist(inflection)
+BuildRequires:  python%{python3_pkgversion}dist(pyjwt)
+BuildRequires:  python%{python3_pkgversion}dist(requests)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -33,10 +45,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django_ansible_base-2024.7.1
-
-
-%generate_buildrequires
-%pyproject_buildrequires -x rest_filters,jwt_consumer
 
 
 %build

@@ -15,6 +15,7 @@ Source:         %{pypi_source poetry_core}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
 
 
 # Fill in the actual package description to submit package to Fedora

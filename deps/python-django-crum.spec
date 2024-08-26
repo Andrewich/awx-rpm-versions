@@ -15,6 +15,12 @@ Source:         %{pypi_source django-crum}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(pytest-runner)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-twine)
+BuildRequires:  python%{python3_pkgversion}dist(django) >= 1.8
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django-crum-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

@@ -15,6 +15,13 @@ Source:         %{pypi_source bindep}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(distro) >= 1.7
+BuildRequires:  python%{python3_pkgversion}dist(pbr) >= 2
+BuildRequires:  python%{python3_pkgversion}dist(parsley)
+BuildRequires:  python%{python3_pkgversion}dist(packaging)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n bindep-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

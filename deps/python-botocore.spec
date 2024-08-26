@@ -15,6 +15,12 @@ Source:         %{pypi_source botocore}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(jmespath) < 2~~ with python%{python3_pkgversion}dist(jmespath) >= 0.7.1)
+BuildRequires:  (python%{python3_pkgversion}dist(python-dateutil) < 3~~ with python%{python3_pkgversion}dist(python-dateutil) >= 2.1)
+BuildRequires:  (python%{python3_pkgversion}dist(urllib3) < 2.1~~ with python%{python3_pkgversion}dist(urllib3) >= 1.25.4)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n botocore-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

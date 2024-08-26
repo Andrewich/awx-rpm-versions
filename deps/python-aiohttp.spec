@@ -14,6 +14,14 @@ Source:         %{pypi_source aiohttp}
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 46.4
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(aiosignal) >= 1.1.2
+BuildRequires:  python%{python3_pkgversion}dist(attrs) >= 17.3
+BuildRequires:  python%{python3_pkgversion}dist(frozenlist) >= 1.1.1
+BuildRequires:  (python%{python3_pkgversion}dist(multidict) < 7~~ with python%{python3_pkgversion}dist(multidict) >= 4.5)
+BuildRequires:  (python%{python3_pkgversion}dist(yarl) < 2~~ with python%{python3_pkgversion}dist(yarl) >= 1)
 BuildRequires:  gcc
 
 
@@ -35,11 +43,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n aiohttp-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

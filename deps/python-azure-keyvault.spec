@@ -15,6 +15,12 @@ Source:         %{pypi_source azure-keyvault %{version} zip}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(azure-keyvault-certificates) >= 4.4 with python%{python3_pkgversion}dist(azure-keyvault-certificates) < 5)
+BuildRequires:  (python%{python3_pkgversion}dist(azure-keyvault-secrets) >= 4.4 with python%{python3_pkgversion}dist(azure-keyvault-secrets) < 5)
+BuildRequires:  (python%{python3_pkgversion}dist(azure-keyvault-keys) >= 4.5 with python%{python3_pkgversion}dist(azure-keyvault-keys) < 5)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n azure-keyvault-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

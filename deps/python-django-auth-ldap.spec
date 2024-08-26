@@ -15,6 +15,13 @@ Source:         %{pypi_source django-auth-ldap}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 42
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 3.4
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 3.4
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(django) >= 3.2
+BuildRequires:  python%{python3_pkgversion}dist(python-ldap) >= 3.1
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django-auth-ldap-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

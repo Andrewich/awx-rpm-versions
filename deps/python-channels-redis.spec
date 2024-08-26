@@ -15,6 +15,13 @@ Source:         %{pypi_source channels_redis}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(aioredis) >= 1 with python%{python3_pkgversion}dist(aioredis) < 2)
+BuildRequires:  (python%{python3_pkgversion}dist(msgpack) >= 1 with python%{python3_pkgversion}dist(msgpack) < 2)
+BuildRequires:  (python%{python3_pkgversion}dist(asgiref) < 4~~ with python%{python3_pkgversion}dist(asgiref) >= 3.2.10)
+BuildRequires:  python%{python3_pkgversion}dist(channels) < 4~~
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +41,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n channels_redis-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

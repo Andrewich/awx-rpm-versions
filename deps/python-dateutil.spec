@@ -15,7 +15,12 @@ Source:         %{pypi_source python-dateutil 2.9.0.post0}
 Patch: 		dateutil-deps.patch
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel python%{python3_pkgversion}-setuptools_scm
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm)
+BuildRequires:  python%{python3_pkgversion}dist(six) >= 1.5
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -32,10 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n python-dateutil-2.9.0.post0
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

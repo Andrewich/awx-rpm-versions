@@ -15,6 +15,15 @@ Source:         %{pypi_source ansible-runner}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(setuptools) <= 69.0.2 with python%{python3_pkgversion}dist(setuptools) >= 45)
+BuildRequires:  (python%{python3_pkgversion}dist(setuptools-scm) <= 8.0.4 with python%{python3_pkgversion}dist(setuptools-scm) >= 6.2)
+BuildRequires:  (python%{python3_pkgversion}dist(setuptools-scm[toml]) <= 8.0.4 with python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 6.2)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(pexpect) >= 4.5
+BuildRequires:  python%{python3_pkgversion}dist(packaging)
+BuildRequires:  python%{python3_pkgversion}dist(python-daemon)
+BuildRequires:  python%{python3_pkgversion}dist(pyyaml)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n ansible-runner-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

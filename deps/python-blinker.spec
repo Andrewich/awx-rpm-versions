@@ -15,6 +15,8 @@ Source:         %{pypi_source blinker}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(flit-core) < 4~~
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +33,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n blinker-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

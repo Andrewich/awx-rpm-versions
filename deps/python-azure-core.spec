@@ -15,6 +15,13 @@ Source:         %{pypi_source azure-core}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2.21
+BuildRequires:  python%{python3_pkgversion}dist(six) >= 1.11
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions) >= 4.6
+BuildRequires:  python%{python3_pkgversion}dist(aiohttp) >= 3
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +42,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n azure-core-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x aio
 
 
 %build

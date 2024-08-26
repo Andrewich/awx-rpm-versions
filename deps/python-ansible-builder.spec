@@ -14,7 +14,17 @@ Source:         %{pypi_source ansible_builder}
 
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel python%{python3_pkgversion}-setuptools_scm
+BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(setuptools) <= 70 with python%{python3_pkgversion}dist(setuptools) >= 45)
+BuildRequires:  (python%{python3_pkgversion}dist(setuptools-scm) <= 8.1 with python%{python3_pkgversion}dist(setuptools-scm) >= 6.2)
+BuildRequires:  (python%{python3_pkgversion}dist(setuptools-scm[toml]) <= 8.1 with python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 6.2)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(pyyaml)
+BuildRequires:  python%{python3_pkgversion}dist(bindep)
+BuildRequires:  python%{python3_pkgversion}dist(jsonschema)
+BuildRequires:  python%{python3_pkgversion}dist(packaging)
+
 
 # Fill in the actual package description to submit package to Fedora
 %global _description %{expand:
@@ -30,10 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n ansible_builder-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build
