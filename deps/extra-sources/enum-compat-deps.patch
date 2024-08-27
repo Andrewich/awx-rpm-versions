@@ -1,10 +1,10 @@
 diff --git a/setup.py b/setup.py
-index 8faeb14..29812bb 100755
+index 8faeb14..d7969c1 100755
 --- a/setup.py
 +++ b/setup.py
-@@ -40,5 +40,4 @@ if __name__ == '__main__':
-         keywords=[
-             'enum', 'compatibility', 'enum34',
-         ],
--        install_requires=['enum34; python_version < "3.4"'],
-     )
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python
++#!/usr/bin/env python3
+ from __future__ import absolute_import, division, print_function
+
+ import sys
