@@ -16,6 +16,8 @@ Patch:		sqlparse-python-explicit.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(flit-core) < 4~~ with python%{python3_pkgversion}dist(flit-core) >= 3.2)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n sqlparse-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

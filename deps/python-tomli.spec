@@ -15,6 +15,8 @@ Source:         %{pypi_source tomli}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(flit-core) < 4~~ with python%{python3_pkgversion}dist(flit-core) >= 3.2)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +33,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n tomli-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build
