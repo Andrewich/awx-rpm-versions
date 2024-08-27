@@ -15,6 +15,11 @@ Source:         %{pypi_source setuptools-scm}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 61
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(packaging) >= 20
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n setuptools-scm-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x toml
 
 
 %build
