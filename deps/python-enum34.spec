@@ -32,10 +32,6 @@ Summary:        %{summary}
 %autosetup -p1 -n enum34-%{version}
 
 
-%generate_buildrequires
-%pyproject_buildrequires
-
-
 %build
 %pyproject_wheel
 
