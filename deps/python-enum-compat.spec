@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://github.com/jstasiak/enum-compat
 Source:         %{pypi_source enum-compat}
 
+Patch: 		enum-compat-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel

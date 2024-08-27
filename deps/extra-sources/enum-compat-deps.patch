@@ -1,0 +1,10 @@
+diff --git a/setup.py b/setup.py
+index 8faeb14..29812bb 100755
+--- a/setup.py
++++ b/setup.py
+@@ -40,5 +40,4 @@ if __name__ == '__main__':
+         keywords=[
+             'enum', 'compatibility', 'enum34',
+         ],
+-        install_requires=['enum34; python_version < "3.4"'],
+     )
