@@ -15,6 +15,11 @@ Patch:         psycopg-deps.patch
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel libpq-devel gcc
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 49.2
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions) >= 4.1
+
 
 # Fill in the actual package description to submit package to Fedora
 %global _description %{expand:
@@ -33,11 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n psycopg-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

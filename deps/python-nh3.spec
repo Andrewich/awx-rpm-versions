@@ -14,6 +14,8 @@ Source:         %{pypi_source nh3}
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(maturin) < 2~~ with python%{python3_pkgversion}dist(maturin) >= 1)
 BuildRequires:  gcc
 BuildRequires:  rust
 BuildRequires:  cargo
@@ -33,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n nh3-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

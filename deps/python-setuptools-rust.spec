@@ -15,6 +15,11 @@ Source:         %{pypi_source setuptools-rust}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 62.4
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(semantic-version) < 3~~ with python%{python3_pkgversion}dist(semantic-version) >= 2.8.2)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n setuptools-rust-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

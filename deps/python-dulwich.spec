@@ -15,6 +15,10 @@ Source:         %{pypi_source dulwich}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 61.2
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(urllib3) >= 1.25
 BuildRequires:  gcc
 
 
@@ -32,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n dulwich-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

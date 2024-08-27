@@ -15,6 +15,10 @@ Source:         %{pypi_source googleapis-common-protos}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  ((python%{python3_pkgversion}dist(protobuf) < 3.20 or python%{python3_pkgversion}dist(protobuf) > 3.20) with (python%{python3_pkgversion}dist(protobuf) < 3.20.1 or python%{python3_pkgversion}dist(protobuf) > 3.20.1) with (python%{python3_pkgversion}dist(protobuf) < 4.21.1 or python%{python3_pkgversion}dist(protobuf) > 4.21.1) with (python%{python3_pkgversion}dist(protobuf) < 4.21.2 or python%{python3_pkgversion}dist(protobuf) > 4.21.2) with (python%{python3_pkgversion}dist(protobuf) < 4.21.3 or python%{python3_pkgversion}dist(protobuf) > 4.21.3) with (python%{python3_pkgversion}dist(protobuf) < 4.21.4 or python%{python3_pkgversion}dist(protobuf) > 4.21.4) with (python%{python3_pkgversion}dist(protobuf) < 4.21.5 or python%{python3_pkgversion}dist(protobuf) > 4.21.5) with python%{python3_pkgversion}dist(protobuf) < 5~~dev0 with python%{python3_pkgversion}dist(protobuf) >= 3.19.5)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n googleapis-common-protos-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

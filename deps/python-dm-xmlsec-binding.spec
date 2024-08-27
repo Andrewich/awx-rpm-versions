@@ -14,6 +14,10 @@ Source:         %{pypi_source dm.xmlsec.binding}
 
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel libxml2-devel xmlsec1-openssl-devel xmlsec1-devel gcc libtool-ltdl-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(lxml) >= 3
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -32,9 +36,6 @@ Summary:        %{summary}
 %autosetup -p1 -n dm.xmlsec.binding-%{version}
 sed -i '/Md5/d' src/_xmlsec.c
 sed -i '/Sha1/d' src/_xmlsec.c
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

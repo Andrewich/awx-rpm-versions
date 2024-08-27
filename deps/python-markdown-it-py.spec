@@ -15,6 +15,9 @@ Source:         %{pypi_source markdown-it-py}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(flit-core) < 4~~ with python%{python3_pkgversion}dist(flit-core) >= 3.4)
+BuildRequires:  (python%{python3_pkgversion}dist(mdurl) >= 0.1 with python%{python3_pkgversion}dist(mdurl) < 1)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n markdown-it-py-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

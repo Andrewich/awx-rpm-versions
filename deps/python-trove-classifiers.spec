@@ -15,6 +15,10 @@ Source:         %{pypi_source trove_classifiers}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools)
+BuildRequires:  python%{python3_pkgversion}dist(calver)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n trove_classifiers-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

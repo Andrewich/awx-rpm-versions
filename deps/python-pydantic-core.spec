@@ -15,6 +15,9 @@ Source:         %{pypi_source pydantic_core}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(maturin) < 2~~ with python%{python3_pkgversion}dist(maturin) >= 1)
+BuildRequires:  ((python%{python3_pkgversion}dist(typing-extensions) < 4.7 or python%{python3_pkgversion}dist(typing-extensions) > 4.7) with python%{python3_pkgversion}dist(typing-extensions) >= 4.6)
 BuildRequires:  gcc
 BuildRequires:  rust
 BuildRequires:  cargo
@@ -33,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pydantic_core-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

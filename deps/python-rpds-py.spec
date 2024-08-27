@@ -14,6 +14,8 @@ Source:         %{pypi_source rpds_py}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(maturin) < 2~~ with python%{python3_pkgversion}dist(maturin) >= 1)
 BuildRequires:  gcc
 BuildRequires:	rust
 BuildRequires:	cargo
@@ -32,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n rpds_py-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

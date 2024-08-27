@@ -15,6 +15,10 @@ Source:         %{pypi_source PyYAML}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(cython) < 3~~
 BuildRequires:  gcc
 
 
@@ -32,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n PyYAML-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

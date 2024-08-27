@@ -15,6 +15,9 @@ Source:         %{pypi_source rsa}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry-core) >= 1
+BuildRequires:  python%{python3_pkgversion}dist(pyasn1) >= 0.1.3
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n rsa-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

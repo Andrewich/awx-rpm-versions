@@ -14,6 +14,11 @@ Source:         %{pypi_source pycares}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(cffi) >= 1.5
+BuildRequires:  python%{python3_pkgversion}dist(idna) >= 2.1
 BuildRequires:  gcc
 
 
@@ -35,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pycares-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x idna
 
 
 %build

@@ -15,6 +15,10 @@ Source:         %{pypi_source rfc3986}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(idna)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +39,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n rfc3986-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x idna2008
 
 
 %build

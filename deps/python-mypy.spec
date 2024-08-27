@@ -14,6 +14,13 @@ Source:         %{pypi_source mypy}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.6.2
+BuildRequires:  python%{python3_pkgversion}dist(wheel) >= 0.30
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions) >= 4.1
+BuildRequires:  python%{python3_pkgversion}dist(mypy-extensions) >= 1
+BuildRequires:  python%{python3_pkgversion}dist(types-psutil)
+BuildRequires:  python%{python3_pkgversion}dist(types-setuptools)
 BuildRequires:  gcc
 
 
@@ -34,11 +41,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n mypy-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

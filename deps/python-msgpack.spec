@@ -14,6 +14,10 @@ Source:         %{pypi_source msgpack}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(cython) >= 0.29.30 with python%{python3_pkgversion}dist(cython) < 0.30)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 35.0.2
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 
 
@@ -31,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n msgpack-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build
