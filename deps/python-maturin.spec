@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%define  debug_package %{nil}
 
 Name:           python-maturin
 Version:        1.6.0
