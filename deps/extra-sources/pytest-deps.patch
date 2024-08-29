@@ -1,0 +1,16 @@
+diff --git a/pyproject.toml b/pyproject.toml
+index 01acfbf76..864d12c27 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -41,11 +41,9 @@ dynamic = [
+ ]
+ dependencies = [
+     'colorama; sys_platform == "win32"',
+-    'exceptiongroup>=1.0.0rc8; python_version < "3.11"',
+     "iniconfig",
+     "packaging",
+     "pluggy<2.0,>=1.5",
+-    'tomli>=1; python_version < "3.11"',
+ ]
+ [project.optional-dependencies]
+ dev = [

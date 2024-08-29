@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://docs.pytest.org/en/latest/
 Source:         %{pypi_source pytest}
 
+Patch: 		pytest-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
