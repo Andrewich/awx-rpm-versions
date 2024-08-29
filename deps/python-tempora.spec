@@ -20,7 +20,7 @@ BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
 BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 3.4.1
 BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  python%{python3_pkgversion}dist(pytz)
-BuildRequires:  python%{python3_pkgversion}dist(jaraco-functools) >= 1.20
+BuildRequires:  python%{python3_pkgversion}dist(jaraco.functools) >= 1.20
 
 
 # Fill in the actual package description to submit package to Fedora
