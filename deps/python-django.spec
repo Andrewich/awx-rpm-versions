@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://www.djangoproject.com/
 Source:         %{pypi_source Django}
 
+Patch: 		django-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel

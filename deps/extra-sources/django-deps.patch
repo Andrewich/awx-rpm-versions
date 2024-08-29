@@ -1,0 +1,12 @@
+diff --git a/setup.cfg b/setup.cfg
+index 574b02e2ba..c4b92f6e3a 100644
+--- a/setup.cfg
++++ b/setup.cfg
+@@ -41,7 +41,6 @@ include_package_data = true
+ zip_safe = false
+ install_requires =
+     asgiref >= 3.6.0, < 4
+-    backports.zoneinfo; python_version<"3.9"
+     sqlparse >= 0.3.1
+     tzdata; sys_platform == 'win32'
+ 
