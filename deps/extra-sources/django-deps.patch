@@ -1,8 +1,6 @@
-diff --git a/setup.cfg b/setup.cfg
-index c90d68a..271e113 100644
---- a/setup.cfg
-+++ b/setup.cfg
-@@ -41,7 +41,6 @@ include_package_data = true
+--- ./setup.cfg	2024-08-29 11:51:22.531317610 +0000
++++ ../setup.cfg	2024-08-29 11:51:37.238728626 +0000
+@@ -40,7 +40,6 @@
  zip_safe = false
  install_requires = 
  	asgiref >= 3.6.0, < 4
