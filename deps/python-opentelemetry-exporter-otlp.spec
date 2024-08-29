@@ -17,8 +17,8 @@ BuildArch:      noarch
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(hatchling)
-BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-grpc) = 1.24
-BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-http) = 1.24
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-grpc) = 1.24.0
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-http) = 1.24.0
 
 
 # Fill in the actual package description to submit package to Fedora

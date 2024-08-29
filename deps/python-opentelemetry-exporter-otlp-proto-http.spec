@@ -20,8 +20,8 @@ BuildRequires:  python%{python3_pkgversion}dist(hatchling)
 BuildRequires:  python%{python3_pkgversion}dist(deprecated) >= 1.2.6
 BuildRequires:  (python%{python3_pkgversion}dist(googleapis-common-protos) >= 1.52 with python%{python3_pkgversion}dist(googleapis-common-protos) < 2)
 BuildRequires:  (python%{python3_pkgversion}dist(opentelemetry-api) >= 1.15 with python%{python3_pkgversion}dist(opentelemetry-api) < 2)
-BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-common) = 1.24
-BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-proto) = 1.24
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-common) = 1.24.0
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-proto) = 1.24.0
 BuildRequires:  (python%{python3_pkgversion}dist(opentelemetry-sdk) >= 1.24 with python%{python3_pkgversion}dist(opentelemetry-sdk) < 1.25)
 BuildRequires:  (python%{python3_pkgversion}dist(requests) >= 2.7 with python%{python3_pkgversion}dist(requests) < 3)
 

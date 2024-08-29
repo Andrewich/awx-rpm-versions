@@ -18,7 +18,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(hatchling)
 BuildRequires:  (python%{python3_pkgversion}dist(opentelemetry-api) >= 1.12 with python%{python3_pkgversion}dist(opentelemetry-api) < 2)
-BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-instrumentation) = 0.45~b0
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-instrumentation) = 0.45b0
 
 
 # Fill in the actual package description to submit package to Fedora

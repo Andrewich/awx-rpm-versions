@@ -1,0 +1,11 @@
+--- ../setup.cfg	2024-08-29 12:28:40.595210184 +0000
++++ ./setup.cfg	2024-08-29 12:28:49.588073748 +0000
+@@ -43,8 +43,6 @@
+ 	PyJWT[crypto]>=1.0.0,<3
+ 	
+ 	cryptography>=0.6,<44
+-	
+-	mock; python_version<'3.3'
+ 
+ [options.extras_require]
+ broker = 

@@ -19,7 +19,7 @@ BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
 BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 3.4.1
 BuildRequires:  python%{python3_pkgversion}dist(wheel)
-BuildRequires:  python%{python3_pkgversion}dist(jaraco-classes)
+BuildRequires:  python%{python3_pkgversion}dist(jaraco.classes)
 BuildRequires:  python%{python3_pkgversion}dist(importlib-metadata) >= 4.11.4
 BuildRequires:  python%{python3_pkgversion}dist(secretstorage) >= 3.2
 BuildRequires:  python%{python3_pkgversion}dist(jeepney) >= 0.4.2
