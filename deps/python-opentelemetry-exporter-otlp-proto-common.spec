@@ -15,6 +15,9 @@ Source:         %{pypi_source opentelemetry_exporter_otlp_proto_common}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-proto) = 1.24
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -32,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n opentelemetry_exporter_otlp_proto_common-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

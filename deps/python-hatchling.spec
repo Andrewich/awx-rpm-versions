@@ -15,6 +15,11 @@ Source:         %{pypi_source hatchling}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(packaging) >= 23.2
+BuildRequires:  python%{python3_pkgversion}dist(pathspec) >= 0.10.1
+BuildRequires:  python%{python3_pkgversion}dist(pluggy) >= 1
+BuildRequires:  python%{python3_pkgversion}dist(trove-classifiers)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n hatchling-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

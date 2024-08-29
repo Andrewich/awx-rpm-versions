@@ -15,6 +15,15 @@ Source:         %{pypi_source opentelemetry_exporter_otlp_proto_grpc}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(deprecated) >= 1.2.6
+BuildRequires:  (python%{python3_pkgversion}dist(googleapis-common-protos) >= 1.52 with python%{python3_pkgversion}dist(googleapis-common-protos) < 2)
+BuildRequires:  (python%{python3_pkgversion}dist(grpcio) < 2~~ with python%{python3_pkgversion}dist(grpcio) >= 1)
+BuildRequires:  (python%{python3_pkgversion}dist(opentelemetry-api) >= 1.15 with python%{python3_pkgversion}dist(opentelemetry-api) < 2)
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-exporter-otlp-proto-common) = 1.24
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-proto) = 1.24
+BuildRequires:  (python%{python3_pkgversion}dist(opentelemetry-sdk) >= 1.24 with python%{python3_pkgversion}dist(opentelemetry-sdk) < 1.25)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +44,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n opentelemetry_exporter_otlp_proto_grpc-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

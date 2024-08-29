@@ -15,6 +15,12 @@ Source:         %{pypi_source Django}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(asgiref) < 4~~ with python%{python3_pkgversion}dist(asgiref) >= 3.6)
+BuildRequires:  python%{python3_pkgversion}dist(sqlparse) >= 0.3.1
+BuildRequires:  python%{python3_pkgversion}dist(bcrypt)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +41,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n Django-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x bcrypt
 
 
 %build

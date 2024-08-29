@@ -15,6 +15,9 @@ Source:         %{pypi_source pyhamcrest}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-vcs)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pyhamcrest-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

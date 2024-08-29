@@ -15,6 +15,11 @@ Source:         %{pypi_source h2}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(hyperframe) < 7~~ with python%{python3_pkgversion}dist(hyperframe) >= 6)
+BuildRequires:  (python%{python3_pkgversion}dist(hpack) < 5~~ with python%{python3_pkgversion}dist(hpack) >= 4)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n h2-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

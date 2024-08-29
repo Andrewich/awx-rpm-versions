@@ -15,6 +15,11 @@ Source:         %{pypi_source frozenlist}
 Patch:		frozenlist-deterministic.patch
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(expandvars)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 47
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(cython)
 BuildRequires:  gcc
 
 
@@ -32,10 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n frozenlist-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

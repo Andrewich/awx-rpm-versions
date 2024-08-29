@@ -15,6 +15,8 @@ Source:         %{pypi_source opentelemetry_semantic_conventions 0.45b0}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -32,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n opentelemetry_semantic_conventions-0.45b0
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

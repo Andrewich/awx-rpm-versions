@@ -15,6 +15,13 @@ Source:         %{pypi_source yarl}
 Patch:		yarl-deterministic.patch
 BuildArch:      x86_64
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(expandvars)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 47
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(cython)
+BuildRequires:  python%{python3_pkgversion}dist(idna) >= 2
+BuildRequires:  python%{python3_pkgversion}dist(multidict) >= 4
 BuildRequires:  gcc
 
 
@@ -32,10 +39,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n yarl-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

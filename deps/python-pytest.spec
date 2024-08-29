@@ -15,6 +15,13 @@ Source:         %{pypi_source pytest}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 61
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 6.2.3
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(iniconfig)
+BuildRequires:  python%{python3_pkgversion}dist(packaging)
+BuildRequires:  (python%{python3_pkgversion}dist(pluggy) < 2~~ with python%{python3_pkgversion}dist(pluggy) >= 1.5)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +41,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pytest-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

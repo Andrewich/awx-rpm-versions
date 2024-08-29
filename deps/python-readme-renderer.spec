@@ -15,6 +15,12 @@ Source:         %{pypi_source readme_renderer}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(nh3) >= 0.2.14
+BuildRequires:  python%{python3_pkgversion}dist(docutils) >= 0.13.1
+BuildRequires:  python%{python3_pkgversion}dist(pygments) >= 2.5.1
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n readme_renderer-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

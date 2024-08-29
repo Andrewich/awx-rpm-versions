@@ -15,6 +15,10 @@ Source:         %{pypi_source rich}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry-core) >= 1
+BuildRequires:  python%{python3_pkgversion}dist(markdown-it-py) >= 2.2
+BuildRequires:  (python%{python3_pkgversion}dist(pygments) < 3~~ with python%{python3_pkgversion}dist(pygments) >= 2.13)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n rich-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

@@ -15,6 +15,10 @@ Source:         %{pypi_source django_debug_toolbar}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(django) >= 4.2.9
+BuildRequires:  python%{python3_pkgversion}dist(sqlparse) >= 0.2
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django_debug_toolbar-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

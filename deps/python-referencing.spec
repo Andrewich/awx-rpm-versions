@@ -15,6 +15,11 @@ Source:         %{pypi_source referencing}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-vcs)
+BuildRequires:  python%{python3_pkgversion}dist(attrs) >= 22.2
+BuildRequires:  python%{python3_pkgversion}dist(rpds-py) >= 0.7
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n referencing-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

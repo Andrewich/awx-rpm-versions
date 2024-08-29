@@ -15,6 +15,9 @@ Source:         %{pypi_source hatch_vcs}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling) >= 1.1
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 6.4
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n hatch_vcs-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

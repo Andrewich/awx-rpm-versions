@@ -37,10 +37,6 @@ Summary:        %{summary}
 %autosetup -p1 -n aiosignal-%{version}
 
 
-%generate_buildrequires
-%pyproject_buildrequires
-
-
 %build
 %pyproject_wheel
 

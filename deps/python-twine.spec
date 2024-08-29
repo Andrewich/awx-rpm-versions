@@ -12,10 +12,24 @@ License:        gpl
 URL:            https://twine.readthedocs.io/
 Source:         %{pypi_source twine}
 
+Patch: twine-pkginfo-versionfix.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
-Patch: twine-pkginfo-versionfix.patch
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 61.2
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 6
+BuildRequires:  python%{python3_pkgversion}dist(readme-renderer) >= 35
+BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2.20
+BuildRequires:  ((python%{python3_pkgversion}dist(requests-toolbelt) < 0.9 or python%{python3_pkgversion}dist(requests-toolbelt) > 0.9) with python%{python3_pkgversion}dist(requests-toolbelt) >= 0.8)
+BuildRequires:  python%{python3_pkgversion}dist(urllib3) >= 1.26
+BuildRequires:  python%{python3_pkgversion}dist(importlib-metadata) >= 3.6
+BuildRequires:  python%{python3_pkgversion}dist(keyring) >= 15.1
+BuildRequires:  python%{python3_pkgversion}dist(rfc3986) >= 1.4
+BuildRequires:  python%{python3_pkgversion}dist(rich) >= 12
+BuildRequires:  python%{python3_pkgversion}dist(pkginfo) <= 1.11.1
+
 
 # Fill in the actual package description to submit package to Fedora
 %global _description %{expand:
@@ -31,10 +45,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n twine-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

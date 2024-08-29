@@ -15,6 +15,14 @@ Source:         %{pypi_source python-jose}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(pytest-runner)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 39.2
+BuildRequires:  (python%{python3_pkgversion}dist(ecdsa) < 0.15 or python%{python3_pkgversion}dist(ecdsa) > 0.15)
+BuildRequires:  python%{python3_pkgversion}dist(rsa)
+BuildRequires:  python%{python3_pkgversion}dist(pyasn1)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +42,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n python-jose-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

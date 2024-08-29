@@ -15,6 +15,11 @@ Source:         %{pypi_source opentelemetry_instrumentation 0.45b0}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  (python%{python3_pkgversion}dist(opentelemetry-api) >= 1.4 with python%{python3_pkgversion}dist(opentelemetry-api) < 2)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 16
+BuildRequires:  (python%{python3_pkgversion}dist(wrapt) < 2~~ with python%{python3_pkgversion}dist(wrapt) >= 1)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -32,10 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n opentelemetry_instrumentation-0.45b0
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

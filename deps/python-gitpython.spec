@@ -15,6 +15,10 @@ Source:         %{pypi_source GitPython}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(gitdb) < 5~~ with python%{python3_pkgversion}dist(gitdb) >= 4.0.1)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n GitPython-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

@@ -15,6 +15,14 @@ Source:         %{pypi_source scikit_build}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-fancy-pypi-readme)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-vcs)
+BuildRequires:  python%{python3_pkgversion}dist(distro)
+BuildRequires:  python%{python3_pkgversion}dist(packaging)
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 42
+BuildRequires:  python%{python3_pkgversion}dist(wheel) >= 0.32
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +42,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n scikit_build-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

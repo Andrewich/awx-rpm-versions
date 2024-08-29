@@ -15,6 +15,12 @@ Source:         %{pypi_source pydantic}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-fancy-pypi-readme) >= 22.5
+BuildRequires:  python%{python3_pkgversion}dist(annotated-types) >= 0.4
+BuildRequires:  python%{python3_pkgversion}dist(pydantic-core) = 2.14.1
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions) >= 4.6.1
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pydantic-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

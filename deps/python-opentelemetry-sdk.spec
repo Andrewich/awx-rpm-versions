@@ -15,6 +15,11 @@ Source:         %{pypi_source opentelemetry_sdk}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-api) = 1.24
+BuildRequires:  python%{python3_pkgversion}dist(opentelemetry-semantic-conventions) = 0.45~b0
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions) >= 3.7.4
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n opentelemetry_sdk-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

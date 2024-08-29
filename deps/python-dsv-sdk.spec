@@ -15,6 +15,9 @@ Source:         %{pypi_source python-dsv-sdk}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(flit-core) < 4~~ with python%{python3_pkgversion}dist(flit-core) >= 2)
+BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2.22
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n python-dsv-sdk-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

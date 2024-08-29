@@ -15,6 +15,14 @@ Source:         %{pypi_source requests}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(charset-normalizer) < 4~~ with python%{python3_pkgversion}dist(charset-normalizer) >= 2)
+BuildRequires:  (python%{python3_pkgversion}dist(idna) < 4~~ with python%{python3_pkgversion}dist(idna) >= 2.5)
+BuildRequires:  (python%{python3_pkgversion}dist(urllib3) < 3~~ with python%{python3_pkgversion}dist(urllib3) >= 1.21.1)
+BuildRequires:  python%{python3_pkgversion}dist(certifi) >= 2017.4.17
+BuildRequires:  ((python%{python3_pkgversion}dist(pysocks) < 1.5.7 or python%{python3_pkgversion}dist(pysocks) > 1.5.7) with python%{python3_pkgversion}dist(pysocks) >= 1.5.6)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +43,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n requests-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x socks
 
 
 %build
