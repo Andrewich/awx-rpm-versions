@@ -14,9 +14,14 @@ Source:         %{pypi_source rapidfuzz}
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 42
+BuildRequires:  (python%{python3_pkgversion}dist(scikit-build) >= 0.17 with python%{python3_pkgversion}dist(scikit-build) < 0.18)
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  gcc
 BuildRequires:  cmake 
 BuildRequires:  ninja-build
+
 
 # Fill in the actual package description to submit package to Fedora
 %global _description %{expand:
@@ -35,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n rapidfuzz-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

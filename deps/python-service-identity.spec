@@ -15,6 +15,12 @@ Source:         %{pypi_source service_identity}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel python%{python3_pkgversion}-pyasn1 python%{python3_pkgversion}-pyasn1-modules
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-vcs)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-fancy-pypi-readme)
+BuildRequires:  python%{python3_pkgversion}dist(attrs) >= 19.1
+BuildRequires:  python%{python3_pkgversion}dist(cryptography)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n service_identity-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build
