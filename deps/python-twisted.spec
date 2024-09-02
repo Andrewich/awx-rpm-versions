@@ -14,7 +14,23 @@ Source:         %{pypi_source twisted}
 
 BuildArch:      noarch
 
-BuildRequires:  python%{python3_pkgversion}-devel python%{python3_pkgversion}-cryptography python%{python3_pkgversion}-bcrypt python%{python3_pkgversion}-pyasn1 python%{python3_pkgversion}-tkinter python%{python3_pkgversion}-pyhamcrest glibc-langpack-en python%{python3_pkgversion}-pyopenssl
+BuildRequires:  python%{python3_pkgversion}-devel python%{python3_pkgversion}-cryptography python%{python3_pkgversion}-bcrypt python%{python3_pkgversion}-pyasn1 python%{python3_pkgversion}-tkinter python%{python3_pkgversion}-pyhamcrest glibc-langpack-en
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling) >= 1.10
+BuildRequires:  python%{python3_pkgversion}dist(hatch-fancy-pypi-readme) >= 22.5
+BuildRequires:  python%{python3_pkgversion}dist(incremental) >= 22.10
+BuildRequires:  python%{python3_pkgversion}dist(attrs) >= 21.3
+BuildRequires:  python%{python3_pkgversion}dist(automat) >= 0.8
+BuildRequires:  python%{python3_pkgversion}dist(constantly) >= 15.1
+BuildRequires:  python%{python3_pkgversion}dist(hyperlink) >= 17.1.1
+BuildRequires:  python%{python3_pkgversion}dist(incremental) >= 22.10
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions) >= 4.2
+BuildRequires:  python%{python3_pkgversion}dist(zope-interface) >= 5
+BuildRequires:  (python%{python3_pkgversion}dist(h2) < 5~~ with python%{python3_pkgversion}dist(h2) >= 3)
+BuildRequires:  (python%{python3_pkgversion}dist(priority) < 2~~ with python%{python3_pkgversion}dist(priority) >= 1.1)
+BuildRequires:  python%{python3_pkgversion}dist(idna) >= 2.4
+BuildRequires:  python%{python3_pkgversion}dist(pyopenssl) >= 21
+BuildRequires:  python%{python3_pkgversion}dist(service-identity) >= 18.1
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -35,11 +51,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n twisted-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x http2,tls
 
 
 %build
