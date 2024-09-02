@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://github.com/AzureAD/microsoft-authentication-library-for-python
 Source:         %{pypi_source msal}
 
+Patch: 		msal-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
