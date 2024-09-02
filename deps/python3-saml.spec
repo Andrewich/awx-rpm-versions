@@ -15,6 +15,13 @@ Source:         %{pypi_source python3-saml}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry) >= 1.1.15
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.1
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(isodate) >= 0.6.1
+BuildRequires:  ((python%{python3_pkgversion}dist(lxml) < 4.7 or python%{python3_pkgversion}dist(lxml) > 4.7) with python%{python3_pkgversion}dist(lxml) >= 4.6.5)
+BuildRequires:  python%{python3_pkgversion}dist(xmlsec) >= 1.3.9
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n python3-saml-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build
