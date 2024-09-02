@@ -30,11 +30,7 @@ Summary:        %{summary}
 
 
 %prep
-%autosetup -p1 -n pyasn1_modules-0.3.0
-
-
-%generate_buildrequires
-%pyproject_buildrequires
+%autosetup -p1 -n pyasn1-modules-0.3.0
 
 
 %build
