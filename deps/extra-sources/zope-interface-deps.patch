@@ -1,10 +1,11 @@
---- ../PKG-INFO	2024-09-02 11:57:35.672907634 +0000
-+++ PKG-INFO	2024-09-02 11:58:39.735049105 +0000
-@@ -38,6 +38,7 @@
- Requires-Dist: coverage>=5.0.3; extra == "testing"
- Requires-Dist: zope.event; extra == "testing"
- Requires-Dist: zope.testing; extra == "testing"
-+Provides: zope-interface
+--- ../setup.py	2024-09-02 13:28:13.691506840 +0000
++++ setup.py	2024-09-02 13:28:18.761993164 +0000
+@@ -99,7 +99,7 @@
+         read('CHANGES.rst')
+         )
  
- ====================
-  ``zope.interface``
+-setup(name='zope.interface',
++setup(name='zope-interface',
+       version='6.2',
+       url='https://github.com/zopefoundation/zope.interface',
+       license='ZPL 2.1',
