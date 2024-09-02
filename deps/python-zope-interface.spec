@@ -11,6 +11,7 @@ Summary:        Interfaces for Python
 License:        gpl
 URL:            https://github.com/zopefoundation/zope.interface
 Source:         %{pypi_source zope.interface}
+Provides:       python%{python3_pkgversion}dist(zope-interface) = 6.2
 
 
 BuildRequires:  python%{python3_pkgversion}-devel
