@@ -17,7 +17,6 @@ BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
-BuildRequires:  python%{python3_pkgversion}dist(poetry-core) >= 1.5
 BuildRequires:  (python%{python3_pkgversion}dist(build) < 2~~ with python%{python3_pkgversion}dist(build) >= 1.0.3)
 BuildRequires:  (python%{python3_pkgversion}dist(cachecontrol) < 0.15~~ with python%{python3_pkgversion}dist(cachecontrol) >= 0.14)
 BuildRequires:  (python%{python3_pkgversion}dist(cleo) < 3~~ with python%{python3_pkgversion}dist(cleo) >= 2.1)
@@ -30,7 +29,7 @@ BuildRequires:  python%{python3_pkgversion}dist(packaging) >= 23.1
 BuildRequires:  (python%{python3_pkgversion}dist(pexpect) < 5~~ with python%{python3_pkgversion}dist(pexpect) >= 4.7)
 BuildRequires:  (python%{python3_pkgversion}dist(pkginfo) < 2~~ with python%{python3_pkgversion}dist(pkginfo) >= 1.10)
 BuildRequires:  (python%{python3_pkgversion}dist(platformdirs) < 5~~ with python%{python3_pkgversion}dist(platformdirs) >= 3)
-BuildRequires:  python%{python3_pkgversion}dist(poetry-core) = 1.9
+BuildRequires:  python%{python3_pkgversion}dist(poetry-core) = 1.9.0
 BuildRequires:  (python%{python3_pkgversion}dist(pyproject-hooks) < 2~~ with python%{python3_pkgversion}dist(pyproject-hooks) >= 1)
 BuildRequires:  (python%{python3_pkgversion}dist(requests) < 3~~ with python%{python3_pkgversion}dist(requests) >= 2.26)
 BuildRequires:  (python%{python3_pkgversion}dist(requests-toolbelt) < 2~~ with python%{python3_pkgversion}dist(requests-toolbelt) >= 1)
