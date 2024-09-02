@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://github.com/pypa/virtualenv
 Source:         %{pypi_source virtualenv}
 
+Patch: 		virtualenv-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel

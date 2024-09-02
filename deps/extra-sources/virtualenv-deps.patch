@@ -1,0 +1,10 @@
+--- ../pyproject.toml	2024-09-02 10:44:11.963568713 +0000
++++ pyproject.toml	2024-09-02 10:44:19.349276800 +0000
+@@ -45,7 +45,6 @@
+ dependencies = [
+   "distlib<1,>=0.3.7",
+   "filelock<4,>=3.12.2",
+-  "importlib-metadata>=6.6; python_version<'3.8'",
+   "platformdirs<5,>=3.9.1",
+ ]
+ optional-dependencies.docs = [
