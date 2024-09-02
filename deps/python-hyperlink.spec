@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://github.com/python-hyper/hyperlink
 Source:         %{pypi_source hyperlink}
 
+Patch: 		hyperlink-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
