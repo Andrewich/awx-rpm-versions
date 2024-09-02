@@ -1,0 +1,10 @@
+--- ../PKG-INFO	2024-09-02 11:57:35.672907634 +0000
++++ PKG-INFO	2024-09-02 11:58:39.735049105 +0000
+@@ -38,6 +38,7 @@
+ Requires-Dist: coverage>=5.0.3; extra == "testing"
+ Requires-Dist: zope.event; extra == "testing"
+ Requires-Dist: zope.testing; extra == "testing"
++Provides: zope-interface
+ 
+ ====================
+  ``zope.interface``
