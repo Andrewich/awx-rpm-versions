@@ -38,10 +38,12 @@ Summary:        %{summary}
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
 %package -n python%{python3_pkgversion}-setuptools_scm+toml
 Summary: Metapackage for python%{python3_pkgversion}-setuptools_scm: toml extra
+AutoReq: no
 Requires: python%{python3_pkgversion}-setuptools_scm = %{?epoch:%{epoch}:}%{version}-%{release}
 AutoProv: no
 Provides: python%{python3_pkgversion}-setuptools_scm+toml = %{?epoch:%{epoch}:}%{version}-%{release}
 Provides: python%{python3_pkgversion}dist(setuptools-scm[toml]) = %{version}
+
 
 %description -n python%{python3_pkgversion}-setuptools_scm+toml
 This is a metapackage bringing in toml extra requires for python%{python3_pkgversion}-setuptools_scm.
