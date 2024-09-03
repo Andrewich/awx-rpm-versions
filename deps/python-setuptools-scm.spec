@@ -39,6 +39,7 @@ Summary:        %{summary}
 %package -n python%{python3_pkgversion}-setuptools_scm+toml
 Summary: Metapackage for python%{python3_pkgversion}-setuptools_scm: toml extra
 AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
 Requires: python%{python3_pkgversion}-setuptools_scm = %{?epoch:%{epoch}:}%{version}-%{release}
 AutoProv: no
 Provides: python%{python3_pkgversion}-setuptools_scm+toml = %{?epoch:%{epoch}:}%{version}-%{release}
