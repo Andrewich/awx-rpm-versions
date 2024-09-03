@@ -36,7 +36,16 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%python_extras_subpkg -n python%{python3_pkgversion}-setuptools_scm -i %{python3__sitelib}/*.dist-info toml
+%package -n python%{python3_pkgversion}-setuptools_scm+toml
+Summary: Metapackage for python%{python3_pkgversion}-setuptools_scm: toml extra
+Requires: python%{python3_pkgversion}-setuptools_scm = %{?epoch:%{epoch}:}%{version}-%{release}
+
+%description -n python%{python3_pkgversion}-setuptools_scm+toml
+This is a metapackage bringing in toml extra requires for python%{python3_pkgversion}-setuptools_scm.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-setuptools_scm+toml
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
