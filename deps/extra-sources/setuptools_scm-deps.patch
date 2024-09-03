@@ -1,0 +1,12 @@
+--- ../pyproject.toml	2024-09-03 06:29:36.650962268 +0000
++++ ./pyproject.toml	2024-09-03 06:36:00.605626812 +0000
+@@ -38,6 +38,9 @@
+ dynamic = [
+   "version",
+ ]
++provides = [
++  "setuptools-scm[toml] == 8.0.4"
++]
+ dependencies = [
+   "packaging>=20",
+   "setuptools",

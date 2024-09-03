@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://pypi.org/project/setuptools-scm/
 Source:         %{pypi_source setuptools-scm}
 
+Patch: 		setuptools_scm-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
