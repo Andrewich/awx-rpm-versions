@@ -1,5 +1,6 @@
 %global debug_package %{nil}
 %global python3_pkgversion 3.11
+%global python3__sitelib64 /usr/lib64/python%{python3_pkgversion}/site-packages
 
 Name:           python-bcrypt
 Version:        4.1.3
@@ -37,8 +38,42 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-bcrypt tests,typecheck
+%package -n python%{python3_pkgversion}-bcrypt+tests
+Summary: Metapackage for python%{python3_pkgversion}-bcrypt: tests extras
+AutoReq: no
+Requires: ((python%{python3_pkgversion}dist(pytest) < 3.3 or python%{python3_pkgversion}dist(pytest) > 3.3) with python%{python3_pkgversion}dist(pytest) >= 3.2.1)
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}-bcrypt = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-bcrypt+tests = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}-bcrypt+tests(x86-64) = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(bcrypt[tests]) = %{version}
 
+%description -n python%{python3_pkgversion}-bcrypt+tests
+This is a metapackage bringing in tests extras requires for python%{python3_pkgversion}-bcrypt.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-bcrypt+tests
+%ghost %{pythone__sitelib64}/*.dist-info
+
+
+%package -n python%{python3_pkgversion}-bcrypt+typecheck
+Summary: Metapackage for python%{python3_pkgversion}-bcrypt: typecheck extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}-bcrypt = %{?epoch:%{epoch}:}%{version}-%{release}
+Requires: python%{python3_pkgversion}dist(mypy)
+AutoProv: no
+Provides: python%{python3_pkgversion}-bcrypt+typecheck = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}-bcrypt+typecheck(x86-64) = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(bcrypt[typecheck]) = %{version}
+
+%description -n python%{python3_pkgversion}-bcrypt+typecheck
+This is a metapackage bringing in typecheck extras requires for python%{python3_pkgversion}-bcrypt.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-bcrypt+typecheck
+%ghost %{pythone__sitelib64}/*.dist-info
 
 %prep
 %autosetup -p1 -n bcrypt-%{version}
