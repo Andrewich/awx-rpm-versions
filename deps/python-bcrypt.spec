@@ -54,7 +54,7 @@ This is a metapackage bringing in tests extras requires for python%{python3_pkgv
 It contains no code, just makes sure the dependencies are installed.
 
 %files -n python%{python3_pkgversion}-bcrypt+tests
-%ghost %{pythone__sitelib64}/*.dist-info
+%ghost %{python3__sitelib64}/*.dist-info
 
 
 %package -n python%{python3_pkgversion}-bcrypt+typecheck
@@ -73,7 +73,7 @@ This is a metapackage bringing in typecheck extras requires for python%{python3_
 It contains no code, just makes sure the dependencies are installed.
 
 %files -n python%{python3_pkgversion}-bcrypt+typecheck
-%ghost %{pythone__sitelib64}/*.dist-info
+%ghost %{python3__sitelib64}/*.dist-info
 
 %prep
 %autosetup -p1 -n bcrypt-%{version}
