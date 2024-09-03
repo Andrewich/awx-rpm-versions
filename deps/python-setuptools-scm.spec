@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python3.11/site-packages
 
 Name:           python-setuptools_scm
 Version:        8.0.4
@@ -35,7 +36,7 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%python_extras_subpkg -n python%{python3_pkgversion}-setuptools_scm -i %{python3_sitelib}/*.dist-info toml
+%python_extras_subpkg -n python%{python3_pkgversion}-setuptools_scm -i %{python3__sitelib}/*.dist-info toml
 
 
 %prep
