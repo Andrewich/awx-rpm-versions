@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-aiohttp
 Version:        3.9.5
@@ -38,7 +39,24 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-aiohttp speedups
+%package -n python%{python3_pkgversion}-aiohttp+speedups
+Summary: Metapackage for python%{python3_pkgversion}-aiohttp: speedups extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(aiodns)
+Requires: python%{python3_pkgversion}dist(brotli)
+Requires: python%{python3_pkgversion}-aiohttp = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-aiohttp+speedups = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}-aiohttp+speedups(x86-64) = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(aiohttp[speedups]) = %{version}
+
+%description -n python%{python3_pkgversion}-aiohttp+speedups
+This is a metapackage bringing in speedups extras requires for python%{python3_pkgversion}-aiohttp.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-aiohttp+speedups
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
