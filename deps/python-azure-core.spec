@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-azure-core
 Version:        1.30.0
@@ -37,8 +38,22 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-azure-core aio
+%package -n python%{python3_pkgversion}-azure-core+aio
+Summary: Metapackage for python%{python3_pkgversion}-azure-core: aio extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(aiohttp) >= 3
+Requires: python%{python3_pkgversion}-azure-core = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-azure-core+aio = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(azure-core[aio]) = 1.30
 
+%description -n python%{python3_pkgversion}-azure-core+aio
+This is a metapackage bringing in aio extras requires for python%{python3_pkgversion}-azure-core.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-azure-core+aio
+%ghost %{python3__sitelib}/*.dist-info
 
 %prep
 %autosetup -p1 -n azure-core-%{version}
