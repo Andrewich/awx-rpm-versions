@@ -1,6 +1,7 @@
 
 %global python3_pkgversion 3.11
 %global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
+%global python3__sitelib64 /usr/lib64/python%{python3_pkgversion}/site-packages
 
 Name:           python-aiohttp
 Version:        3.9.5
@@ -56,7 +57,7 @@ This is a metapackage bringing in speedups extras requires for python%{python3_p
 It contains no code, just makes sure the dependencies are installed.
 
 %files -n python%{python3_pkgversion}-aiohttp+speedups
-%ghost %{python3__sitelib}/*.dist-info
+%ghost %{python3__sitelib64}/*.dist-info
 
 
 %prep
