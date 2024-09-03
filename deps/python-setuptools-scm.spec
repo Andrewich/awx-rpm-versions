@@ -1,6 +1,6 @@
 
 %global python3_pkgversion 3.11
-%global python3__sitelib /usr/lib/python3.11/site-packages
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-setuptools_scm
 Version:        8.0.4
