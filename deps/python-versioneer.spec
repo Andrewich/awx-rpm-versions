@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-versioneer
 Version:        0.29
@@ -33,7 +34,21 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-versioneer toml
+%package -n python%{python3_pkgversion}-versioneer+toml
+Summary: Metapackage for python%{python3_pkgversion}-versioneer: toml extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}-versioneer = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-versioneer+toml = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(versioneer[toml]) = %{version}
+
+%description -n python%{python3_pkgversion}-versioneer+toml
+This is a metapackage bringing in toml extras requires for python%{python3_pkgversion}-versioneer.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-versioneer+toml
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
