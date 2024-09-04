@@ -15,6 +15,13 @@ Source:         %{pypi_source django-oauth-toolkit}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  ((python%{python3_pkgversion}dist(django) < 4 or python%{python3_pkgversion}dist(django) > 4) with python%{python3_pkgversion}dist(django) >= 2.2)
+BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2.13
+BuildRequires:  python%{python3_pkgversion}dist(oauthlib) >= 3.1
+BuildRequires:  python%{python3_pkgversion}dist(jwcrypto) >= 0.8
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django-oauth-toolkit-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

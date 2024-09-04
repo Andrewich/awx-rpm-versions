@@ -15,6 +15,16 @@ Source:         %{pypi_source msrest %{version} zip}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(requests) >= 2.16 with python%{python3_pkgversion}dist(requests) < 3)
+BuildRequires:  python%{python3_pkgversion}dist(requests-oauthlib) >= 0.5
+BuildRequires:  python%{python3_pkgversion}dist(isodate) >= 0.6
+BuildRequires:  python%{python3_pkgversion}dist(certifi) >= 2017.4.17
+BuildRequires:  python%{python3_pkgversion}dist(azure-core) >= 1.24
+BuildRequires:  python%{python3_pkgversion}dist(aiohttp) >= 3
+BuildRequires:  python%{python3_pkgversion}dist(aiodns)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,15 +41,22 @@ Summary:        %{summary}
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
 %pyproject_extras_subpkg -n python%{python3_pkgversion}-msrest async
+%package -n python%{python3_pkgversion}-msrest+async
+Summary: Metapackage for python%{python3_pkgversion}-msrest: async extras
+Requires: python%{python3_pkgversion}-msrest = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-msrest+async = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(msrest[async]) = %{version}
 
+%description -n python%{python3_pkgversion}-msrest+async
+This is a metapackage bringing in async extras requires for python%{python3_pkgversion}-msrest.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-msrest+async
+%ghost %{python3__sitelib}/*.dist-info
 
 %prep
 %autosetup -p1 -n msrest-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires -x async
 
 
 %build

@@ -15,6 +15,13 @@ Source:         %{pypi_source django-rest-swagger}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(coreapi) >= 2.3
+BuildRequires:  python%{python3_pkgversion}dist(openapi-codec) >= 1.3.1
+BuildRequires:  python%{python3_pkgversion}dist(djangorestframework) >= 3.5.4
+BuildRequires:  python%{python3_pkgversion}dist(simplejson)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django-rest-swagger-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

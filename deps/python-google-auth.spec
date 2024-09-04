@@ -15,6 +15,12 @@ Source:         %{pypi_source google-auth}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(cachetools) < 6~~ with python%{python3_pkgversion}dist(cachetools) >= 2)
+BuildRequires:  python%{python3_pkgversion}dist(pyasn1-modules) >= 0.2.1
+BuildRequires:  (python%{python3_pkgversion}dist(rsa) < 5~~ with python%{python3_pkgversion}dist(rsa) >= 3.1.4)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +40,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n google-auth-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

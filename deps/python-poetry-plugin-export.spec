@@ -15,6 +15,9 @@ Source:         %{pypi_source poetry_plugin_export}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  (python%{python3_pkgversion}dist(poetry) < 3~~ with python%{python3_pkgversion}dist(poetry) >= 1.8)
+BuildRequires:  (python%{python3_pkgversion}dist(poetry-core) < 3~~ with python%{python3_pkgversion}dist(poetry-core) >= 1.7)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n poetry_plugin_export-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

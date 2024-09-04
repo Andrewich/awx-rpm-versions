@@ -15,6 +15,14 @@ Source:         %{pypi_source jsonschema}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-vcs)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-fancy-pypi-readme)
+BuildRequires:  python%{python3_pkgversion}dist(attrs) >= 22.2
+BuildRequires:  python%{python3_pkgversion}dist(jsonschema-specifications) >= 2023.3.6
+BuildRequires:  python%{python3_pkgversion}dist(referencing) >= 0.28.4
+BuildRequires:  python%{python3_pkgversion}dist(rpds-py) >= 0.7.1
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +42,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n jsonschema-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

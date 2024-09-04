@@ -15,6 +15,10 @@ Source:         %{pypi_source jsonschema_specifications}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(hatchling)
+BuildRequires:  python%{python3_pkgversion}dist(hatch-vcs)
+BuildRequires:  python%{python3_pkgversion}dist(referencing) >= 0.31
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -32,10 +36,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n jsonschema_specifications-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

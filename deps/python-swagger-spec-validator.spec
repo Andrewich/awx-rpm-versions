@@ -15,6 +15,13 @@ Source:         %{pypi_source swagger_spec_validator}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(jsonschema)
+BuildRequires:  python%{python3_pkgversion}dist(pyyaml)
+BuildRequires:  python%{python3_pkgversion}dist(typing-extensions)
+BuildRequires:  python%{python3_pkgversion}dist(importlib-resources) >= 1.3
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n swagger_spec_validator-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

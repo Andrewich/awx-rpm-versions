@@ -17,6 +17,11 @@ BuildArch:      x86_64
 BuildRequires: openldap-devel
 BuildRequires: gcc
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(pyasn1) >= 0.3.7
+BuildRequires:  python%{python3_pkgversion}dist(pyasn1-modules) >= 0.1.5
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -33,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n python-ldap-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

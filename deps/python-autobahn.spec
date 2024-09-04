@@ -21,7 +21,6 @@ BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  python%{python3_pkgversion}dist(txaio) >= 21.2.1
 BuildRequires:  python%{python3_pkgversion}dist(cryptography) >= 3.4.6
 BuildRequires:  python%{python3_pkgversion}dist(hyperlink) >= 21
-BuildRequires:  python%{python3_pkgversion}dist(setuptools)
 
 
 # Fill in the actual package description to submit package to Fedora

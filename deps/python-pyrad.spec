@@ -15,6 +15,10 @@ Source:         %{pypi_source pyrad}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel python%{python3_pkgversion}-poetry
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry) >= 1
+BuildRequires:  (python%{python3_pkgversion}dist(netaddr) < 0.9~~ with python%{python3_pkgversion}dist(netaddr) >= 0.8)
+BuildRequires:  (python%{python3_pkgversion}dist(six) < 2~~ with python%{python3_pkgversion}dist(six) >= 1.15)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +35,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n pyrad-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

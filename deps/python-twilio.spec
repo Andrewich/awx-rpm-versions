@@ -15,6 +15,13 @@ Source:         %{pypi_source twilio}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2
+BuildRequires:  (python%{python3_pkgversion}dist(pyjwt) < 3~~ with python%{python3_pkgversion}dist(pyjwt) >= 2)
+BuildRequires:  python%{python3_pkgversion}dist(aiohttp) >= 3.8.4
+BuildRequires:  python%{python3_pkgversion}dist(aiohttp-retry) >= 2.8.3
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +38,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n twilio-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

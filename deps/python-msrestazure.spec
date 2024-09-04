@@ -15,6 +15,12 @@ Source:         %{pypi_source msrestazure}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  (python%{python3_pkgversion}dist(msrest) < 2~~ with python%{python3_pkgversion}dist(msrest) >= 0.6)
+BuildRequires:  (python%{python3_pkgversion}dist(adal) < 2~~ with python%{python3_pkgversion}dist(adal) >= 0.6)
+BuildRequires:  python%{python3_pkgversion}dist(six)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +37,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n msrestazure-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

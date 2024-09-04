@@ -15,6 +15,9 @@ Source:         %{pypi_source django-guid}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry) >= 0.12
+BuildRequires:  (python%{python3_pkgversion}dist(django) < 5~~ with python%{python3_pkgversion}dist(django) >= 3.1.1)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +34,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django-guid-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build

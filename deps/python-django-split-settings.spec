@@ -15,6 +15,8 @@ Source:         %{pypi_source django-split-settings}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(poetry) >= 0.12
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -31,10 +33,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n django-split-settings-%{version}
-
-
-%generate_buildrequires
-%pyproject_buildrequires
 
 
 %build
