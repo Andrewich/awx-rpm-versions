@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-jinja2
 Version:        3.1.3
@@ -35,7 +36,22 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-jinja2 i18n
+%package -n python%{python3_pkgversion}-jinja2+i18n
+Summary: Metapackage for python%{python3_pkgversion}-jinja2: i18n extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(babel) >= 2.7
+Requires: python%{python3_pkgversion}-jinja2 = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-jinja2+i18n = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jinja2[i18n]) = %{version}
+
+%description -n python%{python3_pkgversion}-jinja2+i18n
+This is a metapackage bringing in i18n extras requires for python%{python3_pkgversion}-jinja2.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-jinja2+i18n
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
