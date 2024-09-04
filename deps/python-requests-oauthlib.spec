@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-requests-oauthlib
 Version:        1.3.1
@@ -35,7 +36,23 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-requests-oauthlib rsa
+%package -n python%{python3_pkgversion}-requests-oauthlib+rsa
+Summary: Metapackage for python%{python3_pkgversion}-requests-oauthlib: rsa extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(oauthlib) >= 3
+Requires: python%{python3_pkgversion}dist(oauthlib[signedtoken]) >= 3
+Requires: python%{python3_pkgversion}-requests-oauthlib = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-requests-oauthlib+rsa = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(requests-oauthlib[rsa]) = %{version}
+
+%description -n python%{python3_pkgversion}-requests-oauthlib+rsa
+This is a metapackage bringing in rsa extras requires for python%{python3_pkgversion}-requests-oauthlib.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-requests-oauthlib+rsa
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
