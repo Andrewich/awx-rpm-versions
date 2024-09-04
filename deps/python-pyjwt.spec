@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-pyjwt
 Version:        2.8.0
@@ -34,7 +35,22 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-pyjwt crypto
+%package -n python%{python3_pkgversion}-pyjwt+crypto
+Summary: Metapackage for python%{python3_pkgversion}-pyjwt: crypto extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(cryptography) >= 3.4
+Requires: python%{python3_pkgversion}-pyjwt = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-pyjwt+crypto = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(pyjwt[crypto]) = 2.8
+
+%description -n python%{python3_pkgversion}-pyjwt+crypto
+This is a metapackage bringing in crypto extras requires for python%{python3_pkgversion}-pyjwt.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-pyjwt+crypto
+%ghost %{python3__sitelib}/*.dist-info
 
 %prep
 %autosetup -p1 -n PyJWT-%{version}
