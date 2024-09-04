@@ -1,5 +1,6 @@
 %undefine __brp_mangle_shebangs
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-django
 Version:        4.2.10
@@ -37,7 +38,22 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-django bcrypt
+%package -n python%{python3_pkgversion}-django+bcrypt
+Summary: Metapackage for python%{python3_pkgversion}-django: bcrypt extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(bcrypt)
+Requires: python%{python3_pkgversion}-django = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-django+bcrypt = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(django[bcrypt]) = %{version}
+
+%description -n python%{python3_pkgversion}-django+bcrypt
+This is a metapackage bringing in bcrypt extras requires for python%{python3_pkgversion}-django.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-django+bcrypt
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
