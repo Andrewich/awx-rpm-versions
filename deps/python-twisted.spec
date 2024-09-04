@@ -1,5 +1,6 @@
 %bcond_without check
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-twisted
 Version:        23.10.0
@@ -46,7 +47,43 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-twisted http2,tls
+%package -n python%{python3_pkgversion}-twisted+http2
+Summary: Metapackage for python%{python3_pkgversion}-twisted: http2 extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: (python%{python3_pkgversion}dist(h2) < 5 with python%{python3_pkgversion}dist(h2) >= 3)
+Requires: (python%{python3_pkgversion}dist(priority) < 2 with python%{python3_pkgversion}dist(priority) >= 1.1)
+Requires: python%{python3_pkgversion}-twisted = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-twisted+http2 = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(twisted[http2]) = 23.10
+
+%description -n python%{python3_pkgversion}-twisted+http2
+This is a metapackage bringing in http2 extras requires for python%{python3_pkgversion}-twisted.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-twisted+http2
+%ghost %{python3__sitelib}/*.dist-info
+
+
+%package -n python%{python3_pkgversion}-twisted+tls
+Summary: Metapackage for python%{python3_pkgversion}-twisted: tls extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(idna) >= 2.4
+Requires: python%{python3_pkgversion}dist(pyopenssl) >= 21
+Requires: python%{python3_pkgversion}dist(service-identity) >= 18.1
+Requires: python%{python3_pkgversion}-twisted = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-twisted+tls = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(twisted[tls]) = 23.10
+
+%description -n python%{python3_pkgversion}-twisted+tls
+This is a metapackage bringing in tls extras requires for python%{python3_pkgversion}-twisted.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-twisted+tls
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
