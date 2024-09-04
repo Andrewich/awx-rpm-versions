@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-msal
 Version:        1.26.0
@@ -37,7 +38,21 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-msal broker
+%package -n python%{python3_pkgversion}-msal+broker
+Summary: Metapackage for python%{python3_pkgversion}-msal: broker extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}-msal = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-msal+broker = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(msal[broker]) = 1.26
+
+%description -n python%{python3_pkgversion}-msal+broker
+This is a metapackage bringing in broker extras requires for python%{python3_pkgversion}-msal.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-msal+broker
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
