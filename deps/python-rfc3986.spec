@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-rfc3986
 Version:        2.0.0
@@ -34,8 +35,22 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-rfc3986 idna2008
+%package -n python%{python3_pkgversion}-rfc3986+idna2008
+Summary: Metapackage for python%{python3_pkgversion}-rfc3986: idna2008 extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(idna)
+Requires: python%{python3_pkgversion}-rfc3986 = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-rfc3986+idna2008 = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(rfc3986[idna2008]) = 2
 
+%description -n python%{python3_pkgversion}-rfc3986+idna2008
+This is a metapackage bringing in idna2008 extras requires for python%{python3_pkgversion}-rfc3986.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-rfc3986+idna2008
+%ghost %{python3__sitelib}/*.dist-info
 
 %prep
 %autosetup -p1 -n rfc3986-%{version}
