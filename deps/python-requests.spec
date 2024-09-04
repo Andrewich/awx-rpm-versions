@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-requests
 Version:        2.31.0
@@ -38,7 +39,22 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-requests socks
+%package -n python%{python3_pkgversion}-requests+socks
+Summary: Metapackage for python%{python3_pkgversion}-requests: socks extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: ((python%{python3_pkgversion}dist(pysocks) < 1.5.7 or python%{python3_pkgversion}dist(pysocks) > 1.5.7) with python%{python3_pkgversion}dist(pysocks) >= 1.5.6)
+Requires: python%{python3_pkgversion}-requests = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-requests+socks = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(requests[socks]) = 2.31
+
+%description -n python%{python3_pkgversion}-requests+socks
+This is a metapackage bringing in socks extras requires for python%{python3_pkgversion}-requests.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-requests+socks
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
