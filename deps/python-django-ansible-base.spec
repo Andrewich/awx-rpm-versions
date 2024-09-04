@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-django-ansible-base
 Version:        20240701
@@ -41,7 +42,40 @@ Summary:        %{summary}
 
 %description -n python%{python3_pkgversion}-django-ansible-base %_description
 
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-django-ansible-base rest_filters,jwt_consumer
+# For official Fedora packages, review which extras should be actually packaged
+# See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
+%package -n python%{python3_pkgversion}-django-ansible-base+rest_filters
+Summary: Metapackage for python%{python3_pkgversion}-django-ansible-base: rest_filters extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}-django-ansible-base = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-django-ansible-base+rest_filters = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(django-ansible-base[rest_filters]) = 2024.7.1
+
+%description -n python%{python3_pkgversion}-django-ansible-base+rest_filters
+This is a metapackage bringing in rest_filters extras requires for python%{python3_pkgversion}-django-ansible-base.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-django-ansible-base+rest_filters
+%ghost %{python3__sitelib}/*.dist-info
+
+
+%package -n python%{python3_pkgversion}-django-ansible-base+jwt_consumer
+Summary: Metapackage for python%{python3_pkgversion}-django-ansible-base: jwt_consumer extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}-django-ansible-base = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-django-ansible-base+jwt_consumer = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(django-ansible-base[jwt_consumer]) = 2024.7.1
+
+%description -n python%{python3_pkgversion}-django-ansible-base+jwt_consumer
+This is a metapackage bringing in jwt_consumer extras requires for python%{python3_pkgversion}-django-ansible-base.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-django-ansible-base+jwt_consumer
+%ghost %{python3__sitelib}/*.dist-info
 
 %prep
 %autosetup -p1 -n django_ansible_base-2024.7.1
