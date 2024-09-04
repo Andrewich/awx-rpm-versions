@@ -15,6 +15,16 @@ Source:         %{pypi_source jaraco.text}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-functools)
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-context) >= 4.1
+BuildRequires:  python%{python3_pkgversion}dist(autocommand)
+BuildRequires:  python%{python3_pkgversion}dist(inflect)
+BuildRequires:  python%{python3_pkgversion}dist(more-itertools)
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +44,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n jaraco.text-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

@@ -19,6 +19,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  (python%{python3_pkgversion}dist(build) < 2~~ with python%{python3_pkgversion}dist(build) >= 1.0.3)
 BuildRequires:  (python%{python3_pkgversion}dist(cachecontrol) < 0.15~~ with python%{python3_pkgversion}dist(cachecontrol) >= 0.14)
+BuildRequires:  (python%{python3_pkgversion}dist(cachecontrol[filecache]) < 0.15~~ with python%{python3_pkgversion}dist(cachecontrol[filecache]) >= 0.14)
 BuildRequires:  (python%{python3_pkgversion}dist(cleo) < 3~~ with python%{python3_pkgversion}dist(cleo) >= 2.1)
 BuildRequires:  (python%{python3_pkgversion}dist(crashtest) < 0.5~~ with python%{python3_pkgversion}dist(crashtest) >= 0.4.1)
 BuildRequires:  (python%{python3_pkgversion}dist(dulwich) < 0.22~~ with python%{python3_pkgversion}dist(dulwich) >= 0.21.2)

@@ -19,6 +19,7 @@ BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
 BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 3.4.1
 
 
 # Fill in the actual package description to submit package to Fedora

@@ -15,6 +15,19 @@ Source:         %{pypi_source irc}
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
+BuildRequires:  pyproject-rpm-macros
+BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 3.4.1
+BuildRequires:  python%{python3_pkgversion}dist(wheel)
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-collections)
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-text) >= 3.10
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-logging)
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-functools) >= 1.20
+BuildRequires:  python%{python3_pkgversion}dist(jaraco-stream)
+BuildRequires:  python%{python3_pkgversion}dist(pytz)
+BuildRequires:  python%{python3_pkgversion}dist(more-itertools)
+BuildRequires:  python%{python3_pkgversion}dist(tempora) >= 1.6
 
 
 # Fill in the actual package description to submit package to Fedora
@@ -34,11 +47,6 @@ Summary:        %{summary}
 
 %prep
 %autosetup -p1 -n irc-%{version}
-
-
-%generate_buildrequires
-# Keep only those extras which you actually want to package or use during tests
-%pyproject_buildrequires
 
 
 %build

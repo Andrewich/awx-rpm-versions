@@ -21,6 +21,7 @@ BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
 BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  python%{python3_pkgversion}dist(requests) >= 2
 BuildRequires:  python%{python3_pkgversion}dist(oauthlib) >= 3
+BuildRequires:  python%{python3_pkgversion}dist(oauthlib[signedtoken]) >= 3
 
 
 # Fill in the actual package description to submit package to Fedora

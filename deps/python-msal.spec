@@ -22,6 +22,7 @@ BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 40.8
 BuildRequires:  python%{python3_pkgversion}dist(wheel)
 BuildRequires:  (python%{python3_pkgversion}dist(requests) < 3~~ with python%{python3_pkgversion}dist(requests) >= 2)
 BuildRequires:  (python%{python3_pkgversion}dist(pyjwt) < 3~~ with python%{python3_pkgversion}dist(pyjwt) >= 1)
+BuildRequires:  (python%{python3_pkgversion}dist(pyjwt[crypto]) < 3~~ with python%{python3_pkgversion}dist(pyjwt[crypto]) >= 1)
 BuildRequires:  (python%{python3_pkgversion}dist(cryptography) < 44~~ with python%{python3_pkgversion}dist(cryptography) >= 0.6)
 
 

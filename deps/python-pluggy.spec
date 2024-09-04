@@ -18,6 +18,7 @@ BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 45
 BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm) >= 6.2.3
+BuildRequires:  python%{python3_pkgversion}dist(setuptools-scm[toml]) >= 6.2.3
 BuildRequires:  python%{python3_pkgversion}dist(wheel)
 
 
