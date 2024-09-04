@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib /usr/lib/python%{python3_pkgversion}/site-packages
 
 Name:           python-oauthlib
 Version:        3.2.2
@@ -36,7 +37,58 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-oauthlib rsa,signals,signedtoken
+%package -n python%{python3_pkgversion}-oauthlib+rsa
+Summary: Metapackage for python%{python3_pkgversion}-oauthlib: rsa extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(cryptography) >= 3
+Requires: python%{python3_pkgversion}-oauthlib = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-oauthlib+rsa = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(oauthlib[rsa]) = %{version}
+
+%description -n python%{python3_pkgversion}-oauthlib+rsa
+This is a metapackage bringing in rsa extras requires for python%{python3_pkgversion}-oauthlib.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-oauthlib+rsa
+%ghost %{python3__sitelib}/*.dist-info
+
+
+%package -n python%{python3_pkgversion}-oauthlib+signals
+Summary: Metapackage for python%{python3_pkgversion}-oauthlib: signals extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(blinker) >= 1.4
+Requires: python%{python3_pkgversion}-oauthlib = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-oauthlib+signals = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(oauthlib[signals]) = %{version}
+
+%description -n python%{python3_pkgversion}-oauthlib+signals
+This is a metapackage bringing in signals extras requires for python%{python3_pkgversion}-oauthlib.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-oauthlib+signals
+%ghost %{python3__sitelib}/*.dist-info
+
+
+%package -n python%{python3_pkgversion}-oauthlib+signedtoken
+Summary: Metapackage for python%{python3_pkgversion}-oauthlib: signedtoken extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(cryptography) >= 3
+Requires: python%{python3_pkgversion}-oauthlib = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-oauthlib+signedtoken = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(oauthlib[signedtoken]) = %{version}
+
+%description -n python%{python3_pkgversion}-oauthlib+signedtoken
+This is a metapackage bringing in signedtoken extras requires for python%{python3_pkgversion}-oauthlib.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-oauthlib+signedtoken
+%ghost %{python3__sitelib}/*.dist-info
 
 
 %prep
