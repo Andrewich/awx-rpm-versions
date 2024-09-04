@@ -1,5 +1,6 @@
 
 %global python3_pkgversion 3.11
+%global python3__sitelib64 /usr/lib64/python%{python3_pkgversion}/site-packages
 
 Name:           python-pycares
 Version:        4.4.0
@@ -35,7 +36,23 @@ Summary:        %{summary}
 
 # For official Fedora packages, review which extras should be actually packaged
 # See: https://docs.fedoraproject.org/en-US/packaging-guidelines/Python/#Extras
-%pyproject_extras_subpkg -n python%{python3_pkgversion}-pycares idna
+%package -n python%{python3_pkgversion}-pycares+idna
+Summary: Metapackage for python%{python3_pkgversion}-pycares: idna extras
+AutoReq: no
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(idna) >= 2.1
+Requires: python%{python3_pkgversion}-pycares = %{?epoch:%{epoch}:}%{version}-%{release}
+AutoProv: no
+Provides: python%{python3_pkgversion}-pycares+idna = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}-pycares+idna(x86-64) = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(pycares[idna]) = 4.4
+
+%description -n python%{python3_pkgversion}-pycares+idna
+This is a metapackage bringing in idna extras requires for python%{python3_pkgversion}-pycares.
+It contains no code, just makes sure the dependencies are installed.
+
+%files -n python%{python3_pkgversion}-pycares+idna
+%ghost %{python3__sitelib64}/*.dist-info
 
 
 %prep
