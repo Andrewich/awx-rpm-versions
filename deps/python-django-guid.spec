@@ -12,7 +12,6 @@ License:        gpl
 URL:            https://github.com/snok/django-guid
 Source:         %{pypi_source django-guid}
 
-Patch:         django-guid-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
@@ -29,6 +28,9 @@ This is package 'django-guid' generated automatically by pyp2spec.}
 
 %package -n     python%{python3_pkgversion}-django-guid
 Summary:        %{summary}
+AutoReq: no
+Requires: (python%{python3_pkgversion}dist(django) < 5 with python%{python3_pkgversion}dist(django) >= 3.1.1)
+Requires: python(abi) = %{python3_pkgversion}
 
 %description -n python%{python3_pkgversion}-django-guid %_description
 
