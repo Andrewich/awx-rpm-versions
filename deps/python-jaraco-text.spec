@@ -35,6 +35,10 @@ This is package 'jaraco-text' generated automatically by pyp2spec.}
 
 %package -n     python%{python3_pkgversion}-jaraco-text
 Summary:        %{summary}
+AutoProv: no
+Provides: python%{python3_pkgversion}-jaraco-text = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jaraco-text) = 3.12
+Provides: python%{python3_pkgversion}dist(jaraco.text) = 3.12
 
 %description -n python%{python3_pkgversion}-jaraco-text %_description
 
