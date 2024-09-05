@@ -623,9 +623,9 @@ Requires: python%{python3_pkgversion}-pyasn1 python3.11-pip
 %{summary}
 
 %prep
-%setup -q -n awx
-git checkout -f devel
-git checkout -f %{version}
+%setup -q -n awx-%{version}
+#git checkout -f devel
+#git checkout -f %{version}
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
