@@ -33,6 +33,13 @@ This is package 'autobahn' generated automatically by pyp2spec.}
 
 %package -n     python%{python3_pkgversion}-autobahn
 Summary:        %{summary}
+AutoReq: no
+Requires: /usr/bin/python%{python3_pkgversion}
+Requires: python(abi) = %{python3_pkgversion}
+Requires: python%{python3_pkgversion}dist(cryptography) >= 3.4.6
+Requires: python%{python3_pkgversion}dist(hyperlink) >= 21
+Requires: python%{python3_pkgversion}dist(setuptools)
+Requires: python%{python3_pkgversion}dist(txaio) >= 21.2.1
 
 %description -n python%{python3_pkgversion}-autobahn %_description
 
