@@ -14,6 +14,11 @@ Source:         %{pypi_source jaraco.context}
 
 BuildArch:      noarch
 
+AutoProv: no
+Provides: python%{python3_pkgversion}-jaraco-context = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jaraco-context) = 4.3
+Provides: python%{python3_pkgversion}dist(jaraco.context) = 4.3
+
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56

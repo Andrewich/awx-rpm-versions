@@ -14,6 +14,11 @@ Source:         %{pypi_source jaraco.functools}
 
 BuildArch:      noarch
 
+AutoProv: no
+Provides: python%{python3_pkgversion}-jaraco-functools = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jaraco-functools) = 4
+Provides: python%{python3_pkgversion}dist(jaraco.functools) = 4
+
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
