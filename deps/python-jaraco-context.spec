@@ -14,11 +14,6 @@ Source:         %{pypi_source jaraco.context}
 
 BuildArch:      noarch
 
-AutoProv: no
-Provides: python%{python3_pkgversion}-jaraco-context = %{?epoch:%{epoch}:}%{version}-%{release}
-Provides: python%{python3_pkgversion}dist(jaraco-context) = 4.3
-Provides: python%{python3_pkgversion}dist(jaraco.context) = 4.3
-
 BuildRequires:  python%{python3_pkgversion}-devel
 BuildRequires:  pyproject-rpm-macros
 BuildRequires:  python%{python3_pkgversion}dist(setuptools) >= 56
@@ -35,6 +30,10 @@ This is package 'jaraco-context' generated automatically by pyp2spec.}
 
 %package -n     python%{python3_pkgversion}-jaraco-context
 Summary:        %{summary}
+AutoProv: no
+Provides: python%{python3_pkgversion}-jaraco-context = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jaraco-context) = 4.3
+Provides: python%{python3_pkgversion}dist(jaraco.context) = 4.3
 
 %description -n python%{python3_pkgversion}-jaraco-context %_description
 
