@@ -1,0 +1,9 @@
+--- ../requirements.txt	2024-09-05 07:08:33.539288568 +0000
++++ requirements.txt	2024-09-05 07:08:42.553155341 +0000
+@@ -1,6 +1,4 @@
+-distro<1.7.0 ; python_version < '3.6'
+ distro>=1.7.0 ; python_version >= '3.6'
+ pbr>=2.0.0  # Apache-2.0
+ Parsley
+ packaging ; python_version >= '3.6'
+-packaging<21.0 ; python_version < '3.6'

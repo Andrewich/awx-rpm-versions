@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://docs.opendev.org/opendev/bindep
 Source:         %{pypi_source bindep}
 
+Patch:          bindep-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
