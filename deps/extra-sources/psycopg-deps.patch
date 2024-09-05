@@ -1,8 +1,19 @@
-diff -uNr psycopg-3.1.9/pyproject.toml psycopg-3.1.9-fix/pyproject.toml
---- psycopg-3.1.9/pyproject.toml	2023-05-02 13:44:12.000000000 +0200
-+++ psycopg-3.1.9-fix/pyproject.toml	2024-01-01 23:53:26.675502665 +0100
+diff -uNr psycopg-3.1.18/pyproject.toml psycopg-3.1.18-patch/pyproject.toml
+--- psycopg-3.1.18/pyproject.toml	2024-02-04 18:36:48.000000000 +0000
++++ psycopg-3.1.18-patch/pyproject.toml	2024-09-05 10:31:16.681841831 +0000
 @@ -1,3 +1,3 @@
  [build-system]
 -requires = ["setuptools>=49.2.0", "wheel>=0.37"]
 +requires = ["setuptools>=49.2.0"]
  build-backend = "setuptools.build_meta"
+diff -uNr psycopg-3.1.18/setup.cfg psycopg-3.1.18-patch/setup.cfg
+--- psycopg-3.1.18/setup.cfg	2024-02-04 18:36:56.114511500 +0000
++++ psycopg-3.1.18-patch/setup.cfg	2024-09-05 10:31:05.233739392 +0000
+@@ -41,7 +41,6 @@
+ packages = find:
+ zip_safe = False
+ install_requires = 
+-	backports.zoneinfo >= 0.2.0; python_version < "3.9"
+ 	typing-extensions >= 4.1
+ 	tzdata; sys_platform == "win32"
+ 
