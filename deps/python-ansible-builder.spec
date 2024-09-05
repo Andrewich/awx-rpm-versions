@@ -12,7 +12,6 @@ License:        gpl
 URL:            https://ansible-builder.readthedocs.io
 Source:         %{pypi_source ansible_builder}
 
-Patch: 		ansible-builder-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
