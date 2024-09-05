@@ -8,7 +8,7 @@ Summary: Receptor service
 Name: awx-receptor
 Version: 1.4.7
 Release: 1%{dist}
-Source0: receptor-%{version}.tar.gz
+Source: https://github.com/ansible/receptor/archive/refs/tags/v%{version}.tar.gz
 License: ASL2
 Group: AWX
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}.buildroot
