@@ -15,7 +15,7 @@ Summary: Ansible AWX-RPM
 Name: awx-rpm
 Version: 24.6.1
 Release: 4%{dist}
-Source: https://github.com/ansible/awx/archive/refs/tags/%{version}.tar.gz
+Source: awx.tar.gz
 Source1: settings.py-%{version}
 Source2: awx-receiver.service-%{version}
 Source3: awx-dispatcher.service-%{version}
@@ -624,8 +624,8 @@ Requires: python%{python3_pkgversion}-pyasn1 python3.11-pip
 
 %prep
 %setup -q -n awx-%{version}
-#git checkout -f devel
-#git checkout -f %{version}
+git checkout -f devel
+git checkout -f %{version}
 %patch0 -p0
 %patch1 -p0
 %patch2 -p0
