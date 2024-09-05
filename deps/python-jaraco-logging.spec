@@ -31,6 +31,10 @@ This is package 'jaraco-logging' generated automatically by pyp2spec.}
 
 %package -n     python%{python3_pkgversion}-jaraco-logging
 Summary:        %{summary}
+AutoProv: no
+Provides: python%{python3_pkgversion}-jaraco-logging = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jaraco-logging) = 3.3
+Provides: python%{python3_pkgversion}dist(jaraco.logging) = 3.3
 
 %description -n python%{python3_pkgversion}-jaraco-logging %_description
 

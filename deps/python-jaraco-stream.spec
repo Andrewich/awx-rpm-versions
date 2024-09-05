@@ -30,6 +30,10 @@ This is package 'jaraco-stream' generated automatically by pyp2spec.}
 
 %package -n     python%{python3_pkgversion}-jaraco-stream
 Summary:        %{summary}
+AutoProv: no
+Provides: python%{python3_pkgversion}-jaraco-stream = %{?epoch:%{epoch}:}%{version}-%{release}
+Provides: python%{python3_pkgversion}dist(jaraco-stream) = %{version}
+Provides: python%{python3_pkgversion}dist(jaraco.stream) = %{version}
 
 %description -n python%{python3_pkgversion}-jaraco-stream %_description
 
