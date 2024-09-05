@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://github.com/snok/django-guid
 Source:         %{pypi_source django-guid}
 
+Patch:         django-guid-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
