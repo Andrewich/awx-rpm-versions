@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://www.django-rest-framework.org/
 Source:         %{pypi_source djangorestframework}
 
+Patch: 		djangorestframework-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
