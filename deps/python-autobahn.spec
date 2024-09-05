@@ -1,6 +1,6 @@
 
 %global python3_pkgversion 3.11
-%define _binaries_in_noarch_packages_terminate_build   0
+%define debug_package %{nil}
 
 Name:           python-autobahn
 Version:        23.6.2
