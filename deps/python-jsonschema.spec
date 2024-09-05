@@ -12,6 +12,7 @@ License:        gpl
 URL:            https://github.com/python-jsonschema/jsonschema
 Source:         %{pypi_source jsonschema}
 
+Patch: 		jsonschema-deps.patch
 BuildArch:      noarch
 
 BuildRequires:  python%{python3_pkgversion}-devel
