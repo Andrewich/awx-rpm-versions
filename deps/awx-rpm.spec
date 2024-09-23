@@ -637,7 +637,6 @@ mkdir translations/
 mv awx/locale/en-us/LC_MESSAGES/django.po translations/
 mv awx/ui/src/locales/en/messages.po translations/
 
-echo 'node-options="--openssl-legacy-provider"' >> awx/ui/.npmrc
 GIT_BRANCH=%{version} VERSION=%{version} python%{python3_pkgversion} -m build -s
 make ui-next/src
 cp %{_sourcedir}/awx-rpm-logo.svg-%{version} awx/ui_next/src/frontend/awx/main/awx-rpm-logo.svg
