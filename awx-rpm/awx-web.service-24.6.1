@@ -19,7 +19,6 @@ ExecStart=/usr/bin/uwsgi3.11 -b 32768 \
              --master \
              --no-orphans \
              --max-requests=1000 \
-#             --stats /tmp/stats.socket \
              --lazy-apps \
              --logformat "%(addr) %(method) %(uri) - %(proto) %(status)" \
              --logto=/var/log/tower/web.log
