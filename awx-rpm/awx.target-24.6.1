@@ -4,16 +4,7 @@ After=syslog.target network.target
 After=postgresql.service
 After=nginx.service
 After=redis.service
-Requires=nginx.service
 Requires=redis.service
-Requires=awx-daphne.service
-Requires=awx-dispatcher.service
-Requires=awx-receiver.service
-Requires=awx-receptor-worker.service
-Requires=awx-receptor.service
-Requires=awx-web.service
-Requires=awx-ws-heartbeat.service
-Requires=awx-wsrelay.service
 
 [Install]
 WantedBy=multi-user.target
